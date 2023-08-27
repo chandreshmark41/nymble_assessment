@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:nymble_assessment/factory/horizontal_list.dart';
+import 'package:nymble_assessment/models/horizontal_list.dart';
 
 class BoxItemWidget extends StatefulWidget {
 

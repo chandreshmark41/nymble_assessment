@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:nymble_assessment/components/banner_with_color_widget.dart';
-import 'package:nymble_assessment/factory/custom_widgets.dart';
+import 'package:nymble_assessment/api_calls/dynamic_widget_service.dart';
+import 'package:nymble_assessment/models/custom_widgets.dart';
 import 'package:nymble_assessment/factory/widget_factory.dart';
-import 'package:nymble_assessment/json_data.dart';
 
 void main() {
   runApp(const MyApp());
@@ -36,39 +35,24 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
 
+  late DynamicWidgetService dynamicWidgetService;
+  late WidgetFactory widgetFactory;
+
 
   List<CustomWidget> customWidgets = [];
 
   @override
   void initState() {
-    WidgetsBinding.instance.addPostFrameCallback((_)  {
-      print("coming initState");
-      WidgetFactory widgetFactory = WidgetFactory();
 
-      print(customWidgets);
-      //await this.getWeatherData();
+    WidgetsBinding.instance.addPostFrameCallback((_)  {
+      widgetFactory = WidgetFactory();
+      dynamicWidgetService = DynamicWidgetService();
+      customWidgets =  widgetFactory.getListOfCustomWidget(dynamicWidgetService.getDynamicWidgetJson());
+
       setState(() {
-        customWidgets = widgetFactory.getListOfCustomWidget(JsonData.jsonData);
+
       });
     });
-  }
-
-
-  // @override
-  // void inItState(){
-  //   super.initState();
-  //   print("coming initState");
-  //   WidgetFactory widgetFactory = WidgetFactory();
-  //   customWidgets = widgetFactory.getListOfCustomWidget(JsonData.jsonData);
-  //   print(customWidgets);
-  //   //widgetFactory.getListOfCustomWidget(JsonData.jsonData);
-  // }
-
-  List<CustomWidget> getAllWidgets(){
-    WidgetFactory widgetFactory = WidgetFactory();
-    customWidgets = widgetFactory.getListOfCustomWidget(JsonData.jsonData);
-    print(customWidgets);
-    return customWidgets;
   }
 
   @override
@@ -95,11 +79,6 @@ class _MyHomePageState extends State<MyHomePage> {
             ]
           ],
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: getAllWidgets,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }

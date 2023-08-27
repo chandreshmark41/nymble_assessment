@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:nymble_assessment/factory/banner_with_image.dart';
+import 'package:nymble_assessment/models/banner_with_image.dart';
 
 class BannerWithImageWidget extends StatefulWidget{
 

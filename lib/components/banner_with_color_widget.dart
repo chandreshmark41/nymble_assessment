@@ -1,11 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:nymble_assessment/factory/banner_with_color.dart';
+import 'package:nymble_assessment/models/banner_with_color_model.dart';
 
 class BannerWithColorWidget extends StatefulWidget{
 
-  const BannerWithColorWidget({super.key, required this.bannerWithColor});
-  final BannerWithColor bannerWithColor;
+  const BannerWithColorWidget({super.key, required this.bannerWithColorModel});
+  final BannerWithColorModel bannerWithColorModel;
 
   @override
   State<BannerWithColorWidget> createState() => _BannerWithColorWidgetState();
@@ -43,7 +43,7 @@ class _BannerWithColorWidgetState extends State<BannerWithColorWidget>{
                       borderRadius: const BorderRadius.all(Radius.circular(20.0)),
                       color: Colors.black.withOpacity(0.50)
                   ),
-                  child: Text(widget.bannerWithColor.headerText!, style: const TextStyle(color: Colors.white, fontSize: 16),),
+                  child: Text(widget.bannerWithColorModel.headerText!, style: const TextStyle(color: Colors.white, fontSize: 16),),
                 ),
                 Container(
                   height: 25,
@@ -53,7 +53,7 @@ class _BannerWithColorWidgetState extends State<BannerWithColorWidget>{
                       borderRadius: const BorderRadius.all(Radius.circular(20.0)),
                       color: Colors.black.withOpacity(0.50)
                   ),
-                  child: Text(widget.bannerWithColor.footerText!, style: const TextStyle(color: Colors.white, fontSize: 13),),
+                  child: Text(widget.bannerWithColorModel.footerText!, style: const TextStyle(color: Colors.white, fontSize: 13),),
                 ),
               ],
             ),
