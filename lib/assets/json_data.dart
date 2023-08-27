@@ -14,15 +14,27 @@ class JsonData{
         "image":"https://images.pexels.com/photos/541216/pexels-photo-541216.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
         "header_text":"New Recipe",
         "footer_text":"Cook Chicken Curry",
-        "footer_icon":true
+        "footer_icon":false
       },
       {
         "type":"banner",
         "color":"blue",
         "header_text":"Meal Planner",
         "footer_text":"Plan your meals",
-        "footer_icon":false
+        "footer_icon":true
       },
+
+      {
+        "type":"banner",
+        //"color":"blue",
+        "header_text":"Meal Planner",
+        "footer_text":"Plan your meals",
+        "footer_icon":true
+      },
+
+
+
+
       {
         "type":"horizontal_list",
         "title":"Collections",
@@ -68,7 +80,7 @@ class JsonData{
             "image":"https://plus.unsplash.com/premium_photo-1664392182760-b1e2da62b7f7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTAxfHxtZWF0JTIwd2hpdGUlMjBiYWNrZ3JvdW5kfGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=60"
           },
           {
-            "type":"circular_item",
+            "type":"non_exist",
             "text":"Vegan",
             "image":"https://images.unsplash.com/photo-1606923829579-0cb981a83e2e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjQ5fHxmb29kJTIwd2hpdGV8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=800&q=60"
           },
@@ -223,8 +235,6 @@ class JsonData{
           }
         ]
       },
-
-
     ]
   };
 }

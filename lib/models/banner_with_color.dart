@@ -2,7 +2,7 @@ import 'package:nymble_assessment/components/banner_with_color_widget.dart';
 import 'package:nymble_assessment/models/custom_widgets.dart';
 import 'package:flutter/material.dart';
 
-class BannerWithColorModel extends CustomWidget {
+class BannerWithColor extends CustomWidget {
 
   String? type;
   String? color;
@@ -12,11 +12,11 @@ class BannerWithColorModel extends CustomWidget {
 
 
 
-  BannerWithColorModel(
+  BannerWithColor(
       {this.type,
         this.color,
-        this.headerText,
-        this.footerText,
+        required this.headerText,
+        required this.footerText,
         this.footerIcon});
 
   String? getType(){
@@ -25,10 +25,10 @@ class BannerWithColorModel extends CustomWidget {
 
   @override
   Widget buildWidget() {
-    return BannerWithColorWidget(bannerWithColorModel: this);
+    return BannerWithColorWidget(bannerWithColor: this);
   }
 
-  BannerWithColorModel.fromJson(Map<String, dynamic> json) {
+  BannerWithColor.fromJson(Map<String, dynamic> json) {
     type = json['type'];
     color = json['color'];
     headerText = json['header_text'];
@@ -37,12 +37,12 @@ class BannerWithColorModel extends CustomWidget {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['type'] = this.type;
-    data['color'] = this.color;
-    data['header_text'] = this.headerText;
-    data['footer_text'] = this.footerText;
-    data['footer_icon'] = this.footerIcon;
+    final Map<String, dynamic> data = Map<String, dynamic>();
+    data['type'] = type;
+    data['color'] = color;
+    data['header_text'] = headerText;
+    data['footer_text'] = footerText;
+    data['footer_icon'] = footerIcon;
     return data;
   }
 

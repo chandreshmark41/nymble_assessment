@@ -41,16 +41,25 @@ class _BannerWithImageWidgetState extends State<BannerWithImageWidget>{
                   ),
                   child: Text(widget.bannerWithImage.headerText!, style: const TextStyle(color: Colors.white, fontSize: 16),),
                 ),
-                Container(
-                  height: 25,
-                  width: 160,
-                  alignment: Alignment.center,
-                  decoration: BoxDecoration(
-                      borderRadius: const BorderRadius.all(Radius.circular(20.0)),
-                      color: Colors.black.withOpacity(0.50)
-                  ),
-                  child: Text(widget.bannerWithImage.footerText!, style: const TextStyle(color: Colors.white, fontSize: 13),),
-                ),
+
+                Stack(
+                  alignment: Alignment.centerRight,
+                  children: [
+                    Container(
+                      height: 25,
+                      width: 160,
+                      alignment: Alignment.center,
+                      decoration: BoxDecoration(
+                          borderRadius: const BorderRadius.all(Radius.circular(20.0)),
+                          color: Colors.black.withOpacity(0.50)
+                      ),
+                      child: Text(widget.bannerWithImage.footerText!, style: const TextStyle(color: Colors.white, fontSize: 13),),
+                    ),
+
+                    widget.bannerWithImage.footerIcon! ? Icon(Icons.arrow_forward, color: Colors.white,) : Text(""),
+                  ],
+                )
+
               ],
             ),
           ]

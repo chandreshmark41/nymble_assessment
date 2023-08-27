@@ -1,11 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:nymble_assessment/models/banner_with_color_model.dart';
+import 'package:nymble_assessment/models/banner_with_color.dart';
 
 class BannerWithColorWidget extends StatefulWidget{
 
-  const BannerWithColorWidget({super.key, required this.bannerWithColorModel});
-  final BannerWithColorModel bannerWithColorModel;
+  const BannerWithColorWidget({super.key, required this.bannerWithColor});
+  final BannerWithColor bannerWithColor;
 
   @override
   State<BannerWithColorWidget> createState() => _BannerWithColorWidgetState();
@@ -18,7 +18,6 @@ class _BannerWithColorWidgetState extends State<BannerWithColorWidget>{
   Widget build(BuildContext context) {
     // TODO: implement build
     return Container(
-      //margin: EdgeInsets.fromLTRB(10, 10, 10, 10),
       padding: EdgeInsets.all(10),
       height: 140,
       width: 240,
@@ -43,18 +42,25 @@ class _BannerWithColorWidgetState extends State<BannerWithColorWidget>{
                       borderRadius: const BorderRadius.all(Radius.circular(20.0)),
                       color: Colors.black.withOpacity(0.50)
                   ),
-                  child: Text(widget.bannerWithColorModel.headerText!, style: const TextStyle(color: Colors.white, fontSize: 16),),
+                  child: Text(widget.bannerWithColor.headerText!, style: const TextStyle(color: Colors.white, fontSize: 16),),
                 ),
-                Container(
-                  height: 25,
-                  width: 160,
-                  alignment: Alignment.center,
-                  decoration: BoxDecoration(
-                      borderRadius: const BorderRadius.all(Radius.circular(20.0)),
-                      color: Colors.black.withOpacity(0.50)
-                  ),
-                  child: Text(widget.bannerWithColorModel.footerText!, style: const TextStyle(color: Colors.white, fontSize: 13),),
-                ),
+                Stack(
+                  alignment: Alignment.centerRight,
+                  children: [
+                    Container(
+                      height: 25,
+                      width: 160,
+                      alignment: Alignment.center,
+                      decoration: BoxDecoration(
+                          borderRadius: const BorderRadius.all(Radius.circular(20.0)),
+                          color: Colors.black.withOpacity(0.50)
+                      ),
+                      child: Text(widget.bannerWithColor.footerText!, style: const TextStyle(color: Colors.white, fontSize: 13),),
+                    ),
+
+                    widget.bannerWithColor.footerIcon! ? Icon(Icons.arrow_forward, color: Colors.white,) : Text(""),
+                  ],
+                )
               ],
             ),
           ]
@@ -62,23 +68,3 @@ class _BannerWithColorWidgetState extends State<BannerWithColorWidget>{
     );
   }
 }
-//
-//   final BannerWithColor bannerWithColor;
-//
-//
-//   const BannerWithColorWidget({super.key, required this.bannerWithColor});
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     bannerWithColor.type;
-//     // TODO: implement build
-//     return Container(
-//       child: Column(
-//         children: [
-//           Text('')
-//         ],
-//       ),
-//     );
-//   }
-//
-// }

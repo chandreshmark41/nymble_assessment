@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import '../api_calls/dynamic_widget_service.dart';
 import '../factory/widget_factory.dart';
@@ -23,16 +24,11 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   void initState() {
+    super.initState();
+    widgetFactory = WidgetFactory();
+    dynamicWidgetService = DynamicWidgetService();
+    customWidgets =  widgetFactory.getListOfCustomWidget(dynamicWidgetService.getDynamicWidgetJson());
 
-    WidgetsBinding.instance.addPostFrameCallback((_)  {
-      widgetFactory = WidgetFactory();
-      dynamicWidgetService = DynamicWidgetService();
-      customWidgets =  widgetFactory.getListOfCustomWidget(dynamicWidgetService.getDynamicWidgetJson());
-
-      setState(() {
-
-      });
-    });
   }
 
   @override
@@ -46,8 +42,10 @@ class _MyHomePageState extends State<MyHomePage> {
 
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(widget.title),
+        backgroundColor: Color(0xFF141414),
+        title: Text(widget.title,
+          style: GoogleFonts.breeSerif(fontSize: 24, color: Colors.white, fontWeight: FontWeight.w400),
+        ),
       ),
       body: SingleChildScrollView(
         scrollDirection: Axis.vertical,
@@ -55,7 +53,9 @@ class _MyHomePageState extends State<MyHomePage> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             for(final widgets in customWidgets)...[
-              widgets.buildWidget(),
+              Padding(padding: EdgeInsets.all(20),
+              child: widgets.buildWidget(),
+              )
             ]
           ],
         ),

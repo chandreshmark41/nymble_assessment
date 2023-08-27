@@ -12,9 +12,9 @@ class BannerWithImage extends CustomWidget {
 
   BannerWithImage(
       {this.type,
-        this.image,
-        this.headerText,
-        this.footerText,
+        required this.image,
+        required this.headerText,
+        required this.footerText,
         this.footerIcon});
 
   BannerWithImage.fromJson(Map<String, dynamic> json) {
